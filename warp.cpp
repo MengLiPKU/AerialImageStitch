@@ -273,7 +273,5 @@ Point my_warp_perspective(Mat src, Mat &dst, Mat &mask, Mat H)
 	remap(src, dst, xmap, ymap, INTER_LINEAR);
 	Mat src_mask = cv::Mat::ones(src_rows, src_cols, CV_8U) * 255;
 	remap(src_mask, mask, xmap, ymap, INTER_LINEAR);
-	imshow("test", dst);
-	waitKey(0);
 	return corner;
 }
