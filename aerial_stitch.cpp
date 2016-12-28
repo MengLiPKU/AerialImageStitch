@@ -17,7 +17,7 @@ using namespace std;
 using namespace cv;
 using namespace cv::detail;
 
-
+bool matchThreshold = 0.0f;
 
 Rect compose_roi(vector<Mat> imgs, vector<Point> corners)
 {
@@ -129,7 +129,7 @@ int stitch_images(vector<Mat> srcs, Mat mask0, ImageFeatures feat0,
 	//	feature matching
 	cout << "\tmatching the features ... " << endl;
 	vector<MatchesInfo> matches_infos(num_img-1);
-	BestOf2NearestMatcher matcher(false, 0.3f);
+	BestOf2NearestMatcher matcher(false, matchThreshold);
 	//for(int i = 1; i < num_img; i++)
 	//	feature_match_bidirection_raw(feats[0], feats[i], matches_infos[i-1]);
 #pragma omp parallel for

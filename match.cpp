@@ -6,6 +6,8 @@ using namespace std;
 using namespace cv;
 using namespace cv::detail;
 
+bool matcherThreshold = 0.0f;
+
 static void get_match_dst_feat_index(ImageFeatures feat, MatchesInfo match_info, vector<int> &indices)
 {
 	int feat_num = feat.keypoints.size();
@@ -42,7 +44,7 @@ static void check_matchinfo(MatchesInfo &match_info)
 
 void feature_match_bidirection(ImageFeatures feat1, ImageFeatures feat2, MatchesInfo &match_info)
 {
-	BestOf2NearestMatcher matcher(false, 0.3f);
+	BestOf2NearestMatcher matcher(false, matcherThreshold);
 	MatchesInfo match_info21;
 	matcher(feat1, feat2, match_info);
 	check_matchinfo(match_info);
